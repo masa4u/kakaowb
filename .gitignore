@@ -1,0 +1,11 @@
+# ide
+.idea/
+
+# python
+*.pyc
+__pycache__
+
+
+# workspace
+work/
+venv/
