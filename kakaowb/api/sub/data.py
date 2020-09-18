@@ -32,7 +32,7 @@ class Message:
 
 
 @dataclass
-class Actions:
+class Action:
     pass
 
 

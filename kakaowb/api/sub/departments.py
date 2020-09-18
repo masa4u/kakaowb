@@ -12,20 +12,13 @@ class APICMDDepartments(APISub):
             (PRIVATE, POST, f'{part}.list'),
     }
 
-    async def list(self, conversation_id: str, text: str, blocks: List = []) -> List[Department]:
+    async def list(self) -> List[Department]:
         """
         워크스페이스에 속한 전체 부서 정보를 조회합니다.
 
-        $ curl https://api.kakaowork.com/v1/departments.list \
-       -H "Authorization: Bearer {YOUR_ACCESS_TOKEN}" \
-       -H "Content-Type: application/json;charset=utf-8"
-
-        :param conversation_id
-        :param text
-        :params blocks
-        :return: List[Department]
+        response
+        departments: 부서의 상세 정보   - API 호출 성공(true)일 경우 제공
         """
-        rlt = await self.__call__(f'{part}.send',
-                                  args={'conversation_id': conversation_id, 'text': text, 'blocks': blocks})
+        rlt = await self.__call__('departments.list', args={})
 
         return [Department(**x) for x in rlt]
